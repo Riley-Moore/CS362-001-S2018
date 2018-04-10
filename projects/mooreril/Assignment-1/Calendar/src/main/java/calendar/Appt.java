@@ -124,7 +124,7 @@ public class Appt{
     setXmlElement(null);
     
     //Sets valid to true - this is now a valid appointment
-    this.valid = true;
+    valid = true;
 }
     /**
      * Constructs a new appointment that has no start time on the 
@@ -173,7 +173,7 @@ public class Appt{
 			this.valid = false;
 		else if (startMinute < 0 || startMinute > 59)
 			this.valid = false;
-		else if (startYear <= 0)
+		else if (startYear < 0)
 			this.valid = false;
 		else {
 			int NumDaysInMonth = CalendarUtil.NumDaysInMonth(startYear, startMonth - 1);
@@ -341,7 +341,7 @@ public class Appt{
      * @return True if the appointment does occur more than once
      */
     public boolean isRecurring() {
-        return getRecurNumber() != RECUR_NUMBER_NEVER;
+        return getRecurNumber() == (RECUR_NUMBER_FOREVER || RECUR_BY_YEARLY ||RECUR_BY_MONTHLY || RECUR_BY_WEEKLY} ;
     }
     /** Gets recurIncrement */
     public int getRecurIncrement() {
